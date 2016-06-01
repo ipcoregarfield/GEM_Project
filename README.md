@@ -1,6 +1,6 @@
 
 
-# GEM Projects
+# GEM Project
 Welcome to the **GEM project**. There are the documents, floating and fixed-point algorithms, and Verilog codes for the projects.
 
 -------------------
