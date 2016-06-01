@@ -1,13 +1,13 @@
 
 
-# GEM Projects
+# GEM Project
 Welcome to the **GEM project**. There are the documents, floating and fixed-point algorithms, and Verilog codes for the projects.
 
 -------------------
 
 ##1. What is GEM?
 
-**GEM** is a serial of development on communication, digital signal processing and image processing etc., in order to train the engineering behaviors for university students. For more information, connect to the project numbers.
+**GEM** is a serial of development on communication, digital signal processing and image processing etc., in order to train the engineering behaviors for university students. For more information, connect to the project members.
 
 ##2. Who can join the projects?
 It is an open and global project and everyone interested in can join into the projects.
