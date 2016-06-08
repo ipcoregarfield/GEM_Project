@@ -1,0 +1,7 @@
+File                                        Description
+Floating Simulation Description.docx        design document
+cordic_element_float.m                      CORDIC Element Function
+cordic_float.m                              Certain Angle Function
+cordic_float_scan.m                         Value Domain Scan Function
+cordic_float_order.m                        Certain Angle and Certain Order Function
+sin_cos_Demo.m                              Demo for sin and cos CORDIC
