@@ -1,0 +1,7 @@
+File                                        Description
+Fixed Point Simulation Description.docx     design document
+cordic_element_fixed.m                      CORDIC Element Function
+cordic_fixed.m                              Certain Angle and Certain Order Function
+cordic_bitwide_fixed.m                      Certain Angle and Ports Bit-Wide Searching Function
+cordic_fixed_scan.m                         Value Domain Scan Function
+sin_cos_fixed_Demo.m                        Demo for sin and cos CORDIC
