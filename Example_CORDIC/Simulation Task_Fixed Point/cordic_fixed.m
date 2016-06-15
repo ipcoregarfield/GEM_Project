@@ -1,4 +1,4 @@
-function [value, real_value, err, mid_results, ek] = cordic_fixed( w, mode, bit_wide, order)
+function [value, real_value, err, mid_results, ek, x0] = cordic_fixed( w, mode, bit_wide, order)
 %Fixed point function for CORDIC algorithm to calculate one certain angle
 %Input: w: value for calculation
 %       order: CORDIC order
@@ -18,6 +18,7 @@ function [value, real_value, err, mid_results, ek] = cordic_fixed( w, mode, bit_
 %        real_value: real function value
 %        mid_results: for Verilog verification
 %        ek: for Verilog implement
+%        x0: 1/K for Verilog coding and verification 
 K = 1.646760258121;
 ek=[];
 %input value check
@@ -99,6 +100,7 @@ else
     y_k = floor(y_k) * (2^bit_wide) + floor((y_k - floor(y_k))* (2^bit_wide));
     z_k = floor(z_k) * (2^bit_wide) + floor((z_k - floor(z_k))* (2^bit_wide));
 end
+x0 = x_k;
 
 %fixed point middle results
 f_x = [x_k];

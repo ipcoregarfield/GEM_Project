@@ -1,9 +1,10 @@
-function [bit_wide, max_err, results, ek, errs, special_value] = cordic_fixed_scan( step, order, err_limitation, mode, bit_limitation)
+function [bit_wide, max_err, results, ek, errs, special_value] = cordic_fixed_scan( step, order, err_limitation, mode, bit_limitation, sample_angle)
 %Whole angle scan for CORDIC algorithm
 %Input: step: #step in the value domain
 %       order: CORDIC order
 %       err_limitation: allowed maximum error
 %       bit_limitation: allowed maximum bit wide
+%       sample_angle: mid-result sampling angle
 %       mode: CORDIC mode
 %            sin/cos for 1; atan for 2; sqrt for 3;
 %Output: max_err: maximum error
@@ -22,7 +23,7 @@ elseif (mode == 2)
     domain = 0:1/(step-1):1;
 else
     %value domain :[0, 10], considering the symmetry
-    domain = 0 :10/(step-1):10;
+    domain = 1 :9/(step-1):10;
 end
 
 %bit wide search
@@ -70,19 +71,26 @@ if (mode(1) ~= 3)
     %single scan value
     for loop1 = 1:step
         w = domain(loop1);
-        [value, real_value, err, mid_results, ek] = cordic_fixed( w, mode, bit_wide, order);
+        [value, real_value, err, mid_results, ek, x0] = cordic_fixed( w, mode, bit_wide, order);
         if ( err > max_err)
             max_err = err;
         end
         results.w = [ results.w; w];
         results.x = [ results.x; value];
         errs = [errs, err];
+        %sample mid-results at set angle
+        if ( abs(w - sample_angle) < (err_limitation*10) && (mode == 1) )
+            results.mid_results = mid_results;
+            results.ek = ek;
+            results.x0 = x0;
+            results.angle_err = abs(w - sample_angle);
+        end
     end
 else
     %two scan values
     for loop1 = 1:step
         for loop2 = 1:step
-            w = [domain(loop1); domain(loop2)];
+            w = [domain(loop1), domain(loop2)];
             [value, real_value, err, mid_results, ek] = cordic_fixed( w, mode, bit_wide, order);
             if ( err > max_err)
                 max_err = err;
