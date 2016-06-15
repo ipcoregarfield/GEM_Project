@@ -1,0 +1,9 @@
+Assumption
+Error limitation: 1e-4 with 10dB margine
+
+
+Conclusion
+CORDIC Type                   Order
+sin/cos                       12
+atan                          12
+sqrt                          12
