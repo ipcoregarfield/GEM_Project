@@ -1,0 +1,10 @@
+Assumption
+Error limitation: 1e-3 with 10dB
+Maximum bit wide: 16
+
+
+Conclusion
+CORDIC Type                   Order                   bit-wide(without pre-set-bit)
+sin/cos                       12                      14
+atan                          12                      14
+sqrt                          12                      13
