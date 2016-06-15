@@ -8,3 +8,6 @@ CORDIC Type                   Order                   bit-wide(without pre-set-b
 sin/cos                       12                      14
 atan                          12                      14
 sqrt                          12                      13
+
+
+The coefficents of e_k: 12867        7596        4013        2037        1022         511         255         127          63          31          15           7           3
