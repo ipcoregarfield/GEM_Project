@@ -28,7 +28,7 @@ parameter ORDER = 0)
 
   ( 
     input CLK,
-    input RESET,
+    input RESET_n,
     input signed[VALUE_WIDTH : 0] x_k,
     input signed[VALUE_WIDTH : 0] y_k,
     input signed[ADDRESS_WIDTH : 0] z_k,
