@@ -47,69 +47,69 @@ reg[3:0] loop;
 
 //Connection to the modules
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h3243), .ORDER(0) )
-   CE0   ( .CLK(clk), .RESET(reset), 
+   CE0   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[0]), .y_k(y[0]), .z_k(z[0]), 
            .x_k1(x[1]), .y_k1(y[1]), .z_k1(z[1])  );
            
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h1DAC), .ORDER(1) )
-   CE1   ( .CLK(clk), .RESET(reset), 
+   CE1   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[1]), .y_k(y[1]), .z_k(z[1]), 
            .x_k1(x[2]), .y_k1(y[2]), .z_k1(z[2])  );           
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h0FAD), .ORDER(2) )
-   CE2   ( .CLK(clk), .RESET(reset), 
+   CE2   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[2]), .y_k(y[2]), .z_k(z[2]), 
            .x_k1(x[3]), .y_k1(y[3]), .z_k1(z[3])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h07F5), .ORDER(3) )
-   CE3   ( .CLK(clk), .RESET(reset), 
+   CE3   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[3]), .y_k(y[3]), .z_k(z[3]), 
            .x_k1(x[4]), .y_k1(y[4]), .z_k1(z[4])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h03FE), .ORDER(4) )
-   CE4   ( .CLK(clk), .RESET(reset), 
+   CE4   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[4]), .y_k(y[4]), .z_k(z[4]), 
            .x_k1(x[5]), .y_k1(y[5]), .z_k1(z[5])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h01FF), .ORDER(5) )
-   CE5   ( .CLK(clk), .RESET(reset), 
+   CE5   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[5]), .y_k(y[5]), .z_k(z[5]), 
            .x_k1(x[6]), .y_k1(y[6]), .z_k1(z[6])  );
 
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h00FF), .ORDER(6) )
-   CE6   ( .CLK(clk), .RESET(reset), 
+   CE6   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[6]), .y_k(y[6]), .z_k(z[6]), 
            .x_k1(x[7]), .y_k1(y[7]), .z_k1(z[7])  );
 
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h007F), .ORDER(7) )
-   CE7   ( .CLK(clk), .RESET(reset), 
+   CE7   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[7]), .y_k(y[7]), .z_k(z[7]), 
            .x_k1(x[8]), .y_k1(y[8]), .z_k1(z[8])  );
            
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h003F), .ORDER(8) )
-   CE8   ( .CLK(clk), .RESET(reset), 
+   CE8   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[8]), .y_k(y[8]), .z_k(z[8]), 
            .x_k1(x[9]), .y_k1(y[9]), .z_k1(z[9])  ); 
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h001F), .ORDER(9) )
-   CE9   ( .CLK(clk), .RESET(reset), 
+   CE9   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[9]), .y_k(y[9]), .z_k(z[9]), 
            .x_k1(x[10]), .y_k1(y[10]), .z_k1(z[10])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h000F), .ORDER(10) )
-   CE10   ( .CLK(clk), .RESET(reset), 
+   CE10   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[10]), .y_k(y[10]), .z_k(z[10]), 
            .x_k1(x[11]), .y_k1(y[11]), .z_k1(z[11])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h0007), .ORDER(11) )
-   CE11   ( .CLK(clk), .RESET(reset), 
+   CE11   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[11]), .y_k(y[11]), .z_k(z[11]), 
            .x_k1(x[12]), .y_k1(y[12]), .z_k1(z[12])  );
 
 CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h0003), .ORDER(12) )
-   CE12   ( .CLK(clk), .RESET(reset), 
+   CE12   ( .CLK(clk), .RESET_n(reset), 
            .x_k(x[12]), .y_k(y[12]), .z_k(z[12]), 
            .x_k1(x[13]), .y_k1(y[13]), .z_k1(z[13])  );
 
