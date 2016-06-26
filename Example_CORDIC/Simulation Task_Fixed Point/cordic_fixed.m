@@ -106,6 +106,7 @@ x0 = x_k;
 f_x = [x_k];
 f_y = [y_k];
 f_z = [z_k];
+mid_results.angle = z_k;
 
 for order1 = 0: order
     [x_k, y_k, z_k, e_k] = cordic_element_fixed( x_k, y_k, z_k, order1, mode, bit_wide);
@@ -130,14 +131,14 @@ end
 
 
 if (mode == 1)
-    value = [x_k, y_k]/ (2^bit_wide);
+    value = [x_k, y_k];
     real_value = [x_n, y_n];
 elseif (mode == 2)
-    value = z_k/(2^bit_wide);
+    value = z_k;
     real_value = z_n;
 else
-    value = x_k/(2^bit_wide)/K;
-    real_value = x_n/K;
+    value = x_k;
+    real_value = x_n;
 end
 
 %for bit check in Verilog

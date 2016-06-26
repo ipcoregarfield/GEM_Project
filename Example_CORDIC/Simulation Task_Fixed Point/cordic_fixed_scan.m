@@ -63,7 +63,11 @@ else
         end
     end
 end
-bit_wide = max_bit;
+if (mode == 1)
+    bit_wide = max_bit+1;
+else
+    bit_wide = max_bit;
+end
 
 %errors calculation
 max_err = 0;
@@ -75,16 +79,24 @@ if (mode(1) ~= 3)
         if ( err > max_err)
             max_err = err;
         end
-        results.w = [ results.w; w];
-        results.x = [ results.x; value];
-        errs = [errs, err];
-        %sample mid-results at set angle
-        if ( abs(w - sample_angle) < (err_limitation*10) && (mode == 1) )
+        
+         %sample mid-results at set angle
+        if ( abs(w - sample_angle) < (err_limitation) && (mode == 1) )
             results.mid_results = mid_results;
             results.ek = ek;
             results.x0 = x0;
             results.angle_err = abs(w - sample_angle);
         end
+        
+        if (mode == 1)
+            w = mid_results.z(1);
+        else
+            w = mid_results.y(1);
+        end
+        results.w = [ results.w; w];
+        results.x = [ results.x; value];
+        errs = [errs, err];
+       
     end
 else
     %two scan values
@@ -96,7 +108,7 @@ else
                 max_err = err;
             end
             errs = [errs, err];
-            results.w = [ results.w; w];
+            results.w = [ results.w; [mid_results.x(1), mid_results.y(1)]];
             results.x = [ results.x; value];
         end
     end

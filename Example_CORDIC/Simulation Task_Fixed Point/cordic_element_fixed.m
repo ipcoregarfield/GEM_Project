@@ -32,14 +32,19 @@ else
 end
 
 %fixed operation
-dx = u*d_k * y_k * ( 2^(-order));
+dx = u* d_k * y_k * ( 2^(-order));
 dy = d_k * x_k * ( 2^(-order));
 dz = d_k * e_k;
 
 %tail operations
-dx = floor( dx);
-dy = floor( dy);
-dz = floor( dz);
+dx = sign(dx) * floor(abs(dx));
+dy = sign(dy) * floor(abs(dy));
+dz = sign(dz) * floor(abs(dz));
+
+% dx = floor(dx);
+% dy = floor(dy);
+% dz = floor(dz);
+
 
 x_k1 = x_k - dx;
 y_k1 = y_k + dy;
