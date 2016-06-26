@@ -20,8 +20,8 @@ file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
 for loop1 = 1:length(results.w)
-    value = floor(results.w(loop1) * (2^ hex_width));
-    fprintf(file, '%s\n', dec2hex(value, ceil(hex_width/4)));
+    value = floor(results.w(loop1));
+    fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
 fclose(file);
 
@@ -31,9 +31,9 @@ file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
 for loop1 = 1:length(results.w)
-    value = floor(results.x(loop1,2) * (2^ bit_wide));
+    value = floor(results.x(loop1,2));
     if (value < 0)
-        value = (2^ bit_wide) + value;
+        value = (2^bit_wide) - value + 1;
     end
     fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
@@ -45,7 +45,7 @@ file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
 for loop1 = 1:length(results.w)
-    value = floor(results.x(loop1,1) * (2^ bit_wide));
+    value = floor(results.x(loop1,1) );
     fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
 fclose(file); 
@@ -54,10 +54,10 @@ file_tv = 'triangle_x_test_vector';
 file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
-for loop1 = 1:order+1
+for loop1 = 1:order+2
     value = results.mid_results.x(loop1);
     if (value < 0)
-        value = (2^ bit_wide) + value;
+        value = (2^ (bit_wide+1)) + value;
     end
     fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
@@ -67,10 +67,10 @@ file_tv = 'triangle_y_test_vector';
 file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
-for loop1 = 1:order+1
+for loop1 = 1:order+2
     value = results.mid_results.y(loop1);
     if (value < 0)
-        value = (2^ bit_wide) + value;
+        value = (2^ (bit_wide+1)) + value;
     end
     fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
@@ -80,10 +80,10 @@ file_tv = 'triangle_z_test_vector';
 file_tv = strcat(file_tv, '.txt');
 hex_width = address - factor;
 file = fopen(file_tv,'w');
-for loop1 = 1:order+1
+for loop1 = 1:order+2
     value = results.mid_results.z(loop1);
     if (value < 0)
-        value = (2^ bit_wide) + value;
+        value = (2^ (bit_wide+1)) + value;
     end
     fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 end
@@ -97,10 +97,23 @@ value = results.x0;
 fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
 fclose(file); 
 
+file_tv = 'triangle_ek_test_vector';
+file_tv = strcat(file_tv, '.txt');
+hex_width = address - factor;
+file = fopen(file_tv,'w');
+for loop1 = 1:order+1
+    value = results.ek(loop1);
+    if (value < 0)
+        value = (2^ (bit_wide+1)) + value;
+    end
+    fprintf(file, '%s\n', dec2hex(value, ceil(bit_wide/4)));
+end
+fclose(file);
+
 figure();
-plot(results.w, results.x(:,1),'r-');
+plot(results.w, results.x(:,1)/(2^(bit_wide)),'r-');
 hold on;
-plot(results.w, results.x(:,2),'b-');
+plot(results.w, results.x(:,2)/(2^(bit_wide)),'b-');
 grid on;
 
 figure();
