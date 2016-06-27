@@ -1,6 +1,5 @@
-CORDIC_Element.v                     CORDIC Element Module
-CORDIC_Element_test.v                Verification Codes for CORDIC_Element
-CORDIC_Element_test.bmp              Verification Results by Modelsim
-triangle_x_test_vector.txt           Test Vector for X
-triangle_y_test_vector.txt           Test Vector for Y
-triangle_z_test_vector.txt           Test Vector for Z
+.v file                      Verilog codes
+     CORDIC_Element          Basic CORDIC element
+     CORDIC                  CORDIC main module with parameter mode assignment
+     _test                   Verification codes
+.bmp file                    Verification results

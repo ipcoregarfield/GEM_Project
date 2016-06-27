@@ -22,7 +22,8 @@ parameter VALUE_WIDTH = 8,
 //Output value's bit width, internal one, for x_k and y_k
 parameter[ADDRESS_WIDTH - 1 : 0] e_k = 2**(ADDRESS_WIDTH - 1),
 //The rotation angle in this step
-parameter ORDER = 0)
+parameter ORDER = 0,
+parameter MODE = 1)
 //Order of this element
 
 
@@ -41,14 +42,25 @@ parameter ORDER = 0)
 wire d_k;
 
 //Logicals
-assign d_k = z_k[ADDRESS_WIDTH];
-//Get the symbol of z_k
+generate
+  if (MODE == 1)
+    begin
+        assign d_k = z_k[ADDRESS_WIDTH];
+        //Get the symbol of z_k
+    end
+  else
+    begin
+        assign d_k = ~(x_k[ADDRESS_WIDTH]^y_k[ADDRESS_WIDTH]);
+        //Get the symbol of -x_k * y_k
+    end
+endgenerate
+
 
 //z_k calculation
 //Angle rotation operation
-always @ (posedge CLK or negedge RESET)
+always @ (posedge CLK or negedge RESET_n)
 begin
-    if (!RESET)
+    if (!RESET_n)
     begin
         z_k1 <= {(ADDRESS_WIDTH){1'b0}};
     end
@@ -66,9 +78,9 @@ end
 
 //x_k and z_k calculation
 //Value operation
-always @ (posedge CLK or negedge RESET)
+always @ (posedge CLK or negedge RESET_n)
 begin
-    if (!RESET)
+    if (!RESET_n)
     begin
         x_k1 <= {(VALUE_WIDTH){1'b0}};
     end
@@ -84,9 +96,9 @@ begin
     end
 end
 
-always @ (posedge CLK or negedge RESET)
+always @ (posedge CLK or negedge RESET_n)
 begin
-    if (!RESET)
+    if (!RESET_n)
     begin
         y_k1 <= {(VALUE_WIDTH){1'b0}};
     end

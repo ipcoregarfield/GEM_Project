@@ -12,7 +12,7 @@ Variables:
          
 ------------------------------------------------------
 History:
-12-20-2015: First Version by Garfield
+06-20-2016: First Version by Garfield
 ***********************************************/
 `timescale 10 ns/100 ps
 //Simulation time assignment
@@ -143,9 +143,13 @@ CORDIC_elemet #(.ADDRESS_WIDTH(`WIDTH-1), .VALUE_WIDTH(`WIDTH-1), .e_k(14'h0003)
     end
     
 //Load the input of 0 order element
+//assign      x[0] = test_vector_x[0];
+//assign      y[0] = test_vector_y[0];
+//assign      z[0] = test_vector_z[0];
+
 assign      x[0] = test_vector_x[0];
 assign      y[0] = test_vector_y[0];
-assign      z[0] = test_vector_z[0];
+assign      z[0] = 0;
     
 //Comparision
     always @(posedge clk)
@@ -164,9 +168,9 @@ assign      z[0] = test_vector_z[0];
         begin
             for (loop = 0; loop <= (`ORDER+1); loop = loop + 1)
             begin
-                comp_x[loop] <= (x[loop] - test_vector_x[loop]);
-                comp_y[loop] <= (y[loop] - test_vector_y[loop]);
-                comp_z[loop] <= (z[loop] - test_vector_z[loop]);
+                comp_x[loop] <= (x[loop]>>>1 - test_vector_x[loop]);
+                comp_y[loop] <= (y[loop]>>>1 - test_vector_y[loop]);
+                comp_z[loop] <= (z[loop]>>>1 - test_vector_z[loop]);
             end
         end
     end
