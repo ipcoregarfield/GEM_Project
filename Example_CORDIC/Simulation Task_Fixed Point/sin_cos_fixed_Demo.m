@@ -3,9 +3,8 @@ err_limitation = 1e-3;
 mode = 1;
 order = 12;
 bit_limitation = 16;
-sample_angle = 0.25;
 
-[bit_wide, max_err, results, ek, errs, special_value] = cordic_fixed_scan( step, order, err_limitation, mode, bit_limitation, sample_angle);
+[bit_wide, max_err, results, ek, errs, special_value] = cordic_fixed_scan( step, order, err_limitation, mode, bit_limitation);
 
 searched_bit_wide = bit_wide
 Maximum_errors = max_err
